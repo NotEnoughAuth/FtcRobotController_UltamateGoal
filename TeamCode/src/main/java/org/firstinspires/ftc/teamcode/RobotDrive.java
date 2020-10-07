@@ -11,7 +11,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 import java.util.Locale;
 
-public class RobotDrive {
+public class
+RobotDrive {
     //Proportional Processing values for distance to drive function
     private final double P_Forward = 0.05;
     private final double P_Strafe = 0.025;
