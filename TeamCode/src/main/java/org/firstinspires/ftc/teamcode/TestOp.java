@@ -15,7 +15,7 @@ public class TestOp extends LinearOpMode {
 
         //run repeatedly once op mode is started
         while(opModeIsActive()){
-            //TESTING
+
         }
     }
 }
