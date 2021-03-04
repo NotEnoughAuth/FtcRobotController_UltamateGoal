@@ -62,7 +62,7 @@ RobotDrive {
         rightRear = (DcMotorEx)hardwareMap.dcMotor.get("back_right_motor");
         imu = hardwareMap.get(BNO055IMU.class, "imu");
         dist = hardwareMap.get(DistanceSensor.class, "distance");
-        colorSensor = hardwareMap.get(ColorSensor.class, "colorSense");
+        colorSensor = hardwareMap.get(ColorSensor.class, "floor_color");
 
 
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -78,12 +78,6 @@ RobotDrive {
         //Motor initialization
         rightFront.setDirection(DcMotor.Direction.REVERSE);
         rightRear.setDirection(DcMotor.Direction.REVERSE);
-
-        rightFront.setPositionPIDFCoefficients(5);
-        rightRear.setPositionPIDFCoefficients(5);
-        leftFront.setPositionPIDFCoefficients(5);
-        leftRear.setPositionPIDFCoefficients(5);
-
 
         //Initialize IMU
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
