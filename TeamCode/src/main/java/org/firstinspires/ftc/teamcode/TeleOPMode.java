@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@TeleOp(name= "TeleOPb")
+@TeleOp(name= "TeleOP")
 public class TeleOPMode extends LinearOpMode {
     RobotDrive robot = new RobotDrive();
 
@@ -31,6 +31,9 @@ public class TeleOPMode extends LinearOpMode {
             robot.mixDrive(forward, strafe, rotate);
 
             //Gamepad 2  ***Gun and intake***
+
+            if (gamepad2.left_bumper) robot.intakeMotor.setPower(1);
+            else robot.intakeMotor.setPower(0);
 
 
 //            telemetry.addData("Red: ", robot.colorSensor.red());

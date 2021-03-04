@@ -36,6 +36,9 @@ RobotDrive {
     public DistanceSensor dist = null;
     public ColorSensor colorSensor = null;
 
+    //Accessory Hardware
+    public DcMotorEx intakeMotor;
+
     //Default motor power levels for wheels
     public double motorPower = 0.5;
 
@@ -63,6 +66,8 @@ RobotDrive {
         imu = hardwareMap.get(BNO055IMU.class, "imu");
         dist = hardwareMap.get(DistanceSensor.class, "distance");
         colorSensor = hardwareMap.get(ColorSensor.class, "floor_color");
+
+        intakeMotor = (DcMotorEx)hardwareMap.dcMotor.get("intake_motor");
 
 
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
