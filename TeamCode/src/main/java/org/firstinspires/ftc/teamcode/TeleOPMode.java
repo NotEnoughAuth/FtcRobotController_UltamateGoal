@@ -33,9 +33,9 @@ public class TeleOPMode extends LinearOpMode {
             //Gamepad 2  ***Gun and intake***
 
 
-            telemetry.addData("Red: ", robot.colorSensor.red());
-            telemetry.addData("Green: ", robot.colorSensor.green());
-            telemetry.addData("Blue: ", robot.colorSensor.blue());
+//            telemetry.addData("Red: ", robot.colorSensor.red());
+//            telemetry.addData("Green: ", robot.colorSensor.green());
+//            telemetry.addData("Blue: ", robot.colorSensor.blue());
             telemetry.addData("Distance: ", robot.dist.getDistance(DistanceUnit.INCH));
             telemetry.update();
         }
