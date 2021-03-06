@@ -36,8 +36,11 @@ RobotDrive {
     public DistanceSensor dist = null;
     public ColorSensor colorSensor = null;
 
-    //Accessory Hardware
+    //Accessory motors/devices like intake and chainlift
     public DcMotorEx intakeMotor;
+    public DcMotorEx chainLift;
+    public Servo dropArm; //servo that drops the intake wheels
+    public DcMotorEx flyWheel;
 
     //Default motor power levels for wheels
     public double motorPower = 0.5;
@@ -67,7 +70,11 @@ RobotDrive {
         dist = hardwareMap.get(DistanceSensor.class, "distance");
         colorSensor = hardwareMap.get(ColorSensor.class, "floor_color");
 
+        //Initalize accessory hardware from hardware map
         intakeMotor = (DcMotorEx)hardwareMap.dcMotor.get("intake_motor");
+        chainLift = (DcMotorEx)hardwareMap.dcMotor.get("chain_motor");
+        dropArm = (Servo)hardwareMap.servo.get("drop_arm");
+        flyWheel = (DcMotorEx)hardwareMap.dcMotor.get("flywheel_motor");
 
 
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
