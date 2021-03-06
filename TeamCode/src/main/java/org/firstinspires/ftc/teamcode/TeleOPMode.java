@@ -42,8 +42,8 @@ public class TeleOPMode extends LinearOpMode {
             if (gamepad2.a) robot.flyWheel.setPower(1);
             else robot.chainLift.setPower(0);
 
-            if (gamepad2.left_bumper) robot.dropArm.setPosition(1); //TODO figure out how much needs to rotate
-            else robot.dropArm.setPosition(0); //TODO figure out default position is on the servo to lock arm in place
+            if (gamepad2.left_bumper) robot.dropArm.setPosition(1.0); //TODO figure out how much needs to rotate
+            else robot.dropArm.setPosition(0.0); //TODO figure out default position is on the servo to lock arm in place
 
 
 //            telemetry.addData("Red: ", robot.colorSensor.red());
