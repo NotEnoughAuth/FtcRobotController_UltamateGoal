@@ -41,6 +41,8 @@ RobotDrive {
     public DcMotorEx chainLift;
     public Servo dropArm; //servo that drops the intake wheels
     public DcMotorEx flyWheel;
+    public DcMotorEx wobbleArm;
+    public Servo wobbleClaw;
 
     //Default motor power levels for wheels
     public double motorPower = 0.5;
@@ -75,6 +77,8 @@ RobotDrive {
         chainLift = (DcMotorEx)hardwareMap.dcMotor.get("chain_motor");
         dropArm = (Servo)hardwareMap.servo.get("drop_arm");
         flyWheel = (DcMotorEx)hardwareMap.dcMotor.get("flywheel_motor");
+        wobbleArm = (DcMotorEx)hardwareMap.dcMotor.get("wobble_arm");
+        wobbleClaw = (Servo)hardwareMap.servo.get("wobble_servo");
 
 
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
