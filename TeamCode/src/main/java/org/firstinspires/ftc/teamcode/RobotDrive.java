@@ -174,7 +174,7 @@ RobotDrive {
             rightRear.setPower(motorPower);
             rightFront.setPower(-1 * motorPower);
         }
-        Thread.sleep(time);
+        //Thread.sleep(time);
         leftFront.setPower(0);
         leftRear.setPower(0);
         rightFront.setPower(0);

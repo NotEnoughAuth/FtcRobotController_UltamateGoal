@@ -33,7 +33,7 @@ public class TeleOPMode extends LinearOpMode {
 
 
             //Gamepad 2  ***Gun and intake***
-            if (gamepad2.right_bumper) robot.intakeMotor.setPower(1); //intake wheel turn on
+            if (gamepad2.right_bumper) robot.intakeMotor.setPower(0.25); //intake wheel turn on
             else robot.intakeMotor.setPower(0);
 
             if (gamepad2.right_trigger>0.1) robot.chainLift.setPower(gamepad2.right_trigger); //chain lift sets power based on the gamepad right trigger input
@@ -45,13 +45,13 @@ public class TeleOPMode extends LinearOpMode {
             if (gamepad2.left_bumper) robot.dropArm.setPosition(1.0); //TODO figure out how much needs to rotate
             else robot.dropArm.setPosition(0.0); //TODO figure out default position is on the servo to lock arm in place
 
-            if (gamepad2.x) robot.wobbleClaw.setPosition(1.0);
+            if (gamepad1.x) robot.wobbleClaw.setPosition(1.0);
             else robot.wobbleClaw.setPosition(0.0);
 
-            if (gamepad2.dpad_down) robot.wobbleArm.setPower(1);
+            if (gamepad1.dpad_down) robot.wobbleArm.setPower(1);
             else robot.wobbleArm.setPower(0);
 
-            if (gamepad2.dpad_up) robot.wobbleArm.setPower(-1);
+            if (gamepad1.dpad_up) robot.wobbleArm.setPower(-1);
             else robot.wobbleArm.setPower(0);
 
 //            telemetry.addData("Red: ", robot.colorSensor.red());
