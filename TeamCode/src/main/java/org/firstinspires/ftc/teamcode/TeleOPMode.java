@@ -33,7 +33,7 @@ public class TeleOPMode extends LinearOpMode {
 
 
             //Gamepad 2  ***Gun and intake***
-            if (gamepad2.right_bumper) robot.intakeMotor.setPower(0.25); //intake wheel turn on
+            if (gamepad2.right_bumper) robot.intakeMotor.setPower(0.75); //intake wheel turn on
             else robot.intakeMotor.setPower(0);
 
             if (gamepad2.right_trigger>0.1) robot.chainLift.setPower(gamepad2.right_trigger); //chain lift sets power based on the gamepad right trigger input

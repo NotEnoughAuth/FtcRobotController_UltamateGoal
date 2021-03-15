@@ -95,6 +95,9 @@ RobotDrive {
         rightFront.setDirection(DcMotor.Direction.REVERSE);
         rightRear.setDirection(DcMotor.Direction.REVERSE);
 
+        //initalization of auxuillary devices
+        flyWheel.setDirection(DcMotorSimple.Direction.REVERSE);
+
         //Initialize IMU
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
