@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
@@ -17,9 +18,10 @@ public class AutonomousDrive extends LinearOpMode {
         waitForStart();
 
         robot.wobbleClaw.setPosition(1);
+        robot.driveEncoder(60);
         //robot.wobbleArm.setPower(1);
 
-        sleep(3000);
+        //sleep(3000);
 
 //            telemetry.addData("Red: ", robot.colorSensor.red());
 //            telemetry.addData("Green: ", robot.colorSensor.green());

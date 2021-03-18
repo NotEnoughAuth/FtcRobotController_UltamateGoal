@@ -25,13 +25,13 @@ RobotDrive {
     private final double TURN_P = 0.005;
 
     private final double GYRO_P = 0.01;
-    private final double wheelDiameter = 3.93701;
+    private final double wheelDiameter = 3.85826772;
     //PID utilities for GyroTurn function
 
 
     //Hardware
-    private DcMotorEx leftFront, leftRear, rightFront, rightRear = null;
-    private final DcMotorEx[] motors = {leftFront, leftRear, rightFront, rightRear};
+    private DcMotorEx leftFront, leftRear, rightFront, rightRear;
+    private DcMotorEx[] motors = new DcMotorEx[4];
     private BNO055IMU imu = null;
     public DistanceSensor dist = null;
     public ColorSensor colorSensor = null;
@@ -86,14 +86,17 @@ RobotDrive {
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+
         //Sensor Initialization
         if (colorSensor instanceof SwitchableLight) {
             ((SwitchableLight)colorSensor).enableLight(false);
         }
 
         //Motor initialization
-        rightFront.setDirection(DcMotor.Direction.REVERSE);
-        rightRear.setDirection(DcMotor.Direction.REVERSE);
+        leftFront.setDirection(DcMotor.Direction.REVERSE);
+        leftRear.setDirection(DcMotor.Direction.REVERSE);
+        //rightFront.setDirection(DcMotor.Direction.REVERSE);
+        //rightRear.setDirection(DcMotor.Direction.REVERSE);
 
         //initalization of auxuillary devices
         flyWheel.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -104,6 +107,11 @@ RobotDrive {
         parameters.loggingEnabled = false;
         parameters.calibrationDataFile = "BNO055IMUCalibration.json";
         imu.initialize(parameters);
+
+        motors[0] = leftFront;
+        motors[1] = leftRear;
+        motors[2] = rightFront;
+        motors[3] = rightRear;
 
     }
 
@@ -127,8 +135,8 @@ RobotDrive {
     void driveEncoder(double Inches) {
         float initialHeading = getHeading();
         int encoderTicks = 0;
-        if (Inches > 0) encoderTicks = (int)(480 * (float)((Inches - 1) / (wheelDiameter * Math.PI)));
-        else if(Inches < 0) encoderTicks = (int)(480 * (float)((Inches + 1) / (wheelDiameter * Math.PI)));
+        if (Inches > 0) encoderTicks = (int)(537.6 * (float)((Inches - 1) / (wheelDiameter * Math.PI)));
+        else if(Inches < 0) encoderTicks = (int)(537.6 * (float)((Inches + 1) / (wheelDiameter * Math.PI)));
          for (DcMotor motor: motors) {
              motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
              motor.setTargetPosition(encoderTicks);
@@ -153,6 +161,8 @@ RobotDrive {
                 telemetry.addData("Front Left", leftFront.getCurrentPosition());
                 telemetry.addData("Front Right", rightFront.getCurrentPosition());
                 telemetry.addData("Rear Right", rightRear.getCurrentPosition());
+            telemetry.addData("Target: ", leftFront.getTargetPosition());
+                telemetry.addData("Closeness ", leftFront.getCurrentPosition() - leftFront.getTargetPosition());
                 telemetry.update();
         }
         for (DcMotor motor : motors)

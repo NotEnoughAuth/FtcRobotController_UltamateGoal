@@ -48,10 +48,10 @@ public class TeleOPMode extends LinearOpMode {
             if (gamepad1.x) robot.wobbleClaw.setPosition(1.0);
             else robot.wobbleClaw.setPosition(0.0);
 
-            if (gamepad1.dpad_down) robot.wobbleArm.setPower(1);
+            if (gamepad2.dpad_down) robot.wobbleArm.setPower(1);
             else robot.wobbleArm.setPower(0);
 
-            if (gamepad1.dpad_up) robot.wobbleArm.setPower(-1);
+            if (gamepad2.dpad_up) robot.wobbleArm.setPower(-1);
             else robot.wobbleArm.setPower(0);
 
 //            telemetry.addData("Red: ", robot.colorSensor.red());
