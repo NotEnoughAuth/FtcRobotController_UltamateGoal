@@ -45,7 +45,7 @@ RobotDrive {
     public Servo wobbleClaw;
 
     //Default motor power levels for wheels
-    public double motorPower = 0.5;
+    public double motorPower = 0.75;
 
     //Debug the error angle in order to get this value, sets the offset to which the robot will turn to meet the required degrees turned
      private final double TURNING_BUFFER = 0;
@@ -135,8 +135,8 @@ RobotDrive {
     void driveEncoder(double Inches) {
         float initialHeading = getHeading();
         int encoderTicks = 0;
-        if (Inches > 0) encoderTicks = (int)(537.6 * (float)((Inches - 1) / (wheelDiameter * Math.PI)));
-        else if(Inches < 0) encoderTicks = (int)(537.6 * (float)((Inches + 1) / (wheelDiameter * Math.PI)));
+        if (Inches > 0) encoderTicks = (int)(793.8 * (float)((Inches - 1) / (wheelDiameter * Math.PI)));
+        else if(Inches < 0) encoderTicks = (int)(793.8 * (float)((Inches + 1) / (wheelDiameter * Math.PI)));
          for (DcMotor motor: motors) {
              motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
              motor.setTargetPosition(encoderTicks);
@@ -147,21 +147,23 @@ RobotDrive {
              motor.setPower(motorPower);
          }
 
-        while (Math.abs(leftFront.getCurrentPosition() - leftFront.getTargetPosition()) > 30) {
+        while (Math.abs(leftFront.getCurrentPosition() - leftFront.getTargetPosition()) > 5) {
             //wait until the motors are done running
-           if (Math.abs((initialHeading - getHeading()) % 360) > 1) {
+           /*if (Math.abs((initialHeading - getHeading()) % 360) > 1) {
                double degreesCorrect = (initialHeading - getHeading()) % 360;
                double motorCorrect = clamp(degreesCorrect * GYRO_P, -.4, .4);
                leftFront.setPower(motorPower - motorCorrect);
                leftRear.setPower(motorPower - motorCorrect);
                rightFront.setPower(motorPower + motorCorrect);
                rightRear.setPower(motorPower + motorCorrect);
-           }
+               telemetry.addData("motorCorrect: ", motorCorrect);
+               telemetry.addData("Gyro: ", degreesCorrect);
+           }*/
                 telemetry.addData("Rear Left", leftRear.getCurrentPosition());
                 telemetry.addData("Front Left", leftFront.getCurrentPosition());
                 telemetry.addData("Front Right", rightFront.getCurrentPosition());
                 telemetry.addData("Rear Right", rightRear.getCurrentPosition());
-            telemetry.addData("Target: ", leftFront.getTargetPosition());
+                telemetry.addData("Target: ", leftFront.getTargetPosition());
                 telemetry.addData("Closeness ", leftFront.getCurrentPosition() - leftFront.getTargetPosition());
                 telemetry.update();
         }
