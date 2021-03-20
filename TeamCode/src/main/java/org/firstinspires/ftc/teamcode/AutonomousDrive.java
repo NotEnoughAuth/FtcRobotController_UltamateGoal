@@ -17,10 +17,21 @@ public class AutonomousDrive extends LinearOpMode {
 
         waitForStart();
 
+
+        sleep(20000);
+
+        robot.driveEncoder(55);
         robot.wobbleClaw.setPosition(1);
-        //robot.wobbleArm.setPower(1);
-        //sleep(2000);
-        robot.driveEncoder(70);
+        robot.wobbleArm.setPower(1);
+
+        while(robot.armTrigger.getState())
+        {
+            telemetry.addData("Button?", robot.armTrigger.getState());
+
+        }
+
+        robot.wobbleArm.setPower(0);
+        robot.wobbleClaw.setPosition(0);
 
 //            telemetry.addData("Red: ", robot.colorSensor.red());
 //            telemetry.addData("Green: ", robot.colorSensor.green());

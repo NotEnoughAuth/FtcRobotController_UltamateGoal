@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.rev.RevTouchSensor;
 import com.qualcomm.robotcore.hardware.*;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -43,6 +44,7 @@ RobotDrive {
     public DcMotorEx flyWheel;
     public DcMotorEx wobbleArm;
     public Servo wobbleClaw;
+    public DigitalChannel armTrigger;
 
     //Default motor power levels for wheels
     public double motorPower = 0.75;
@@ -79,6 +81,8 @@ RobotDrive {
         flyWheel = (DcMotorEx)hardwareMap.dcMotor.get("flywheel_motor");
         wobbleArm = (DcMotorEx)hardwareMap.dcMotor.get("wobble_arm");
         wobbleClaw = (Servo)hardwareMap.servo.get("wobble_servo");
+        armTrigger = hardwareMap.get(DigitalChannel.class, "Arm_Button");
+        armTrigger.setMode(DigitalChannel.Mode.INPUT);
 
 
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
