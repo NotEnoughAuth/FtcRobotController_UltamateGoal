@@ -15,6 +15,8 @@ public class TeleOPMode extends LinearOpMode {
 
         waitForStart();
 
+        robot.dropArm.setPosition(1);
+
         while (opModeIsActive()) {
             //Gamepad 1  ***Drivetrain***
             double forward = gamepad1.left_stick_y * -1; //The y direction on the gamepad is reversed idk why
@@ -26,17 +28,17 @@ public class TeleOPMode extends LinearOpMode {
 
             if (gamepad1.left_bumper) robot.motorPower = 0.2;
             else if (gamepad1.right_bumper) robot.motorPower= 0.15;
-            else robot.motorPower = 0.65;
+            else robot.motorPower = 0.85;
             //Wheel control
             robot.mixDrive(forward, strafe, rotate);
 
 
 
             //Gamepad 2  ***Gun and intake***
-            if (gamepad2.right_bumper) robot.intakeMotor.setPower(0.75); //intake wheel turn on
+            if (gamepad2.left_bumper) robot.intakeMotor.setPower(0.75); //intake wheel turn on
             else robot.intakeMotor.setPower(0);
-            
-            if (gamepad2.left_bumper) robot.intakeMotor.setPower(-0.75); //intake wheel turn on
+
+            if (gamepad2.right_bumper) robot.intakeMotor.setPower(-0.75); //intake wheel turn on
             else robot.intakeMotor.setPower(0);
 
             if (gamepad2.right_trigger>0.1) robot.chainLift.setPower(gamepad2.right_trigger); //chain lift sets power based on the gamepad right trigger input
