@@ -18,9 +18,9 @@ public class AutonomousDrive extends LinearOpMode {
         waitForStart();
 
 
-        sleep(20000);
+        sleep(25000);
 
-        robot.driveEncoder(55);
+        robot.driveEncoder(57);
         robot.wobbleClaw.setPosition(1);
         robot.wobbleArm.setPower(1);
 

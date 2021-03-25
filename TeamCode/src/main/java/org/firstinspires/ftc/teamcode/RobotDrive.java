@@ -47,7 +47,7 @@ RobotDrive {
     public DigitalChannel armTrigger;
 
     //Default motor power levels for wheels
-    public double motorPower = 0.75;
+    public double motorPower = 1;
 
     //Debug the error angle in order to get this value, sets the offset to which the robot will turn to meet the required degrees turned
      private final double TURNING_BUFFER = 0;
