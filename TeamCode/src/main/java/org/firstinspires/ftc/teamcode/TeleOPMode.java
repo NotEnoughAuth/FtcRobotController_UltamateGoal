@@ -27,7 +27,7 @@ public class TeleOPMode extends LinearOpMode {
 
 
             if (gamepad1.left_bumper) robot.motorPower = 0.2;
-            else if (gamepad1.right_bumper) robot.motorPower= 0.15;
+            else if (gamepad1.right_bumper) robot.motorPower= 0.85;
             else robot.motorPower = 1;
             //Wheel control
             robot.mixDrive(forward, strafe, rotate);
@@ -53,10 +53,10 @@ public class TeleOPMode extends LinearOpMode {
             if (gamepad2.x) robot.wobbleClaw.setPosition(1.0);
             else robot.wobbleClaw.setPosition(0.0);
 
-            if (gamepad2.dpad_down) robot.wobbleArm.setPower(1);
+            if (gamepad2.dpad_down && robot.armTrigger.getState()) {robot.wobbleArm.setPower(1); robot.wobbleClaw.setPosition(1.0);}
             else robot.wobbleArm.setPower(0);
 
-            if (gamepad2.dpad_up) robot.wobbleArm.setPower(-1);
+            if (gamepad2.dpad_up) {robot.wobbleArm.setPower(-1); robot.wobbleClaw.setPosition(1.0);}
             else robot.wobbleArm.setPower(0);
 
 //            telemetry.addData("Red: ", robot.colorSensor.red());
